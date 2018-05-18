@@ -3,17 +3,17 @@ package node
 import (
 	"github.com/json-iterator/go"
 	"github.com/kooksee/log"
-	"github.com/kooksee/srelay/sp2p"
-	"github.com/kooksee/p2pkv/node/handlers"
+	"github.com/kooksee/sp2p"
+	"github.com/kooksee/p2pkv/config"
 )
 
 var (
 	json   = jsoniter.ConfigCompatibleWithStandardLibrary
-	logger = log.New("package", "sp2p")
+	logger = log.New("package", "node")
 	hm     = sp2p.GetHManager()
+	cfg    *config.Config
 )
 
-func init() {
-	hm.Registry("kvSet", handlers.KVSet)
-	hm.Registry("kvGet", handlers.KVGet)
+func SetCfg(cfg1 *config.Config) {
+	cfg = cfg1
 }
